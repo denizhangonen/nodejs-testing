@@ -8,14 +8,25 @@
 const expect = require("chai").expect;
 const authMiddleware = require("../middleware/is-auth");
 
-it("should throw an error if no header in req", () => {
-  const req = {
-    get: headerName => {
-      return null;
-    }
-  };
+describe("Auth Middleware", () => {
+  it("should throw an error if no header in req", () => {
+    const req = {
+      get: headerName => {
+        return null;
+      }
+    };
 
-  expect(authMiddleware.bind(this, req, {}, () => {})).to.throw(
-    "Not authenticated!"
-  );
+    expect(authMiddleware.bind(this, req, {}, () => {})).to.throw(
+      "Not authenticated!"
+    );
+  });
+
+  it("should throw an error if authorization header contains only one string", () => {
+    const req = {
+      get: headerName => {
+        return "ciciCat";
+      }
+    };
+    expect(authMiddleware.bind(this, req, {}, () => {})).to.throw();
+  });
 });
