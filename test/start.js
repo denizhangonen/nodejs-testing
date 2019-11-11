@@ -6,8 +6,12 @@
 //   expect(num1 + num2).to.equal(5);
 // });
 
-// it("should not give a reuslt of 6", () => {
-//     const num1 = 3;
-//     const num2 = 2;
-//     expect(num1 + num2).not.to.equal(6);
-//   });
+// it("deep include", () => {
+//   const x = {
+//     t: { 
+//       a: 1
+//     }
+//   };
+//   console.log(x);
+//   expect(x).to.deep.include({ a: 1 });
+// });
